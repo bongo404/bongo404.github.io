@@ -1,12 +1,223 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Tech Blog</title>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Nostalgia</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #3a3a3a;
+            background-color: #f5f5e9;
+            background-image: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c854bc2d-721b-4b98-a586-c3302d1f4059.png');
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        /* Global typography */
+        h1, h2, h3 {
+            font-weight: normal;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d2d2d;
+            border-bottom: 2px solid #d1c7b7;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #3a3a3a;
+            margin-top: 35px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #4a4a4a;
+            font-style: italic;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        a {
+            color: #6a5d4d;
+            text-decoration: none;
+            border-bottom: 1px solid #c4b8a7;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: #8a7d6d;
+            border-bottom-color: #8a7d6d;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f9f8f4;
+            border: 1px solid #d9d5c9;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            padding: 30px;
+            background-color: #f0ede4;
+            border-right: 1px solid #d9d5c9;
+        }
+
+        .sidebar-header {
+            margin-bottom: 30px;
+        }
+
+        .nav-links li {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 5px 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        /* Post preview */
+        .post-preview {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0d9cc;
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: #7a7a7a;
+            margin-bottom: 10px;
+        }
+
+        .post-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #7a7a7a;
+            border-top: 1px solid #d9d5c9;
+        }
+
+        /* Old-school touches */
+        hr.decorative {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+            margin: 30px 0;
+        }
+
+        .typewriter {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #e9e7df;
+            padding: 2px 5px;
+            border: 1px solid #d1c7b7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #d9d5c9;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Welcome to My Tech Blog</h1>
-  <p>Hello! I’m starting my tech blog using GitHub Pages 🚀</p>
-  <p>I’ll share projects, tutorials, and tips here.</p>
-</body>
-</html>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>Tech Nostalgia</h1>
+                <p class="typewriter">Personal Tech Journal</p>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Reading List</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            
+            <hr class="decorative">
+            
+            <div class="sidebar-footer">
+                <p><em>"The dreams of yesterday are the hopes of today and the reality of tomorrow."</em></p>
+                <p>- Robert H. Goddard</p>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Welcome Content -->
+            <div class="welcome-content">
+                <h2>Welcome to Tech Nostalgia</h2>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9134282a-5cc0-46a4-bf93-617e5796ca18.png" alt="Old CRT monitor and keyboard" style="max-width:100%; margin:20px 0; border:1px solid #d1c7b7;">
+                <p>A journey through retro computing, forgotten technologies, and timeless development principles.</p>
+                <p>Explore articles about:</p>
+                <ul style="margin-left:40px;">
+                    <li>Classic hardware restoration</li>
+                    <li>Old-school programming techniques</li>
+                    <li>The evolution of operating systems</li>
+                    <li>Bit mode graphics and classic game dev</li>
+                </ul>
+                <p style="margin-top:30px;">
+                    <a href="articles.html" class="read-more">Browse Articles →</a>
+                </p>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                © 2023 Tech Nostalgia • Built with HTML & CSS
+            </div>
+        </div>
+    </div>
