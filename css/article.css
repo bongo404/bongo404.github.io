@@ -1,0 +1,164 @@
+/* article.css */
+.container {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f9f8f4;
+    border: 1px solid #d9d5c9;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+}
+
+/* Topbar Navigation */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px; /* or 800px to match your container width */
+  background-color: #f0ede4;
+  border-bottom: 1px solid #d9d5c9;
+  padding: 15px 20px;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: top 0.3s ease;
+  z-index: 100;
+}
+
+
+.topbar-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #2d2d2d;
+}
+
+.logo p.typewriter {
+    margin-top: 4px;
+    font-size: 0.9rem;
+}
+
+.topnav .nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.topnav .nav-links a {
+    color: #6a5d4d;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.topnav .nav-links a:hover {
+    border-bottom: 1px solid #8a7d6d;
+    color: #8a7d6d;
+}
+/* Topbar styles */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0); /* Center horizontally */
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Match the container width */
+    background-color: #f0ede4;
+    border-bottom: 1px solid #d9d5c9;
+    padding: 15px 20px;
+    font-family: 'Merriweather', serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Smooth transition for hiding */
+    z-index: 100;
+}
+/* When the topbar is visible */
+.topbar.visible {
+    transform: translate(-50%, 0); /* Show the topbar */
+}
+  .topbar.hidden {
+      transform: translate(-50%, -100%); /* Move it out of view */
+  }
+  
+/* Container inside the topbar */
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation links */
+.topnav .nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.topnav .nav-links li a {
+  color: #6a5d4d;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.topnav .nav-links li a:hover {
+  color: #8a7d6d;
+}
+
+/* Toggle button fixed at bottom right */
+.toggle-topbar-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(106, 93, 77, 0.3);
+  border: none;
+  padding: 10px 14px;
+  font-size: 1.5rem;
+  color: #6a5d4d;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 150;
+  backdrop-filter: blur(5px);
+  display: flex; /* Ensure it displays */
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.toggle-topbar-btn:hover {
+  background-color: rgba(106, 93, 77, 0.6);
+}
+
+/* Add padding to main content to avoid being under topbar when visible */
+.main-content {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 20px; /* default padding */
+  transition: padding-top 0.3s ease;
+}
+
+/* When topbar is visible, add extra padding */
+.topbar.visible ~ .main-content {
+  padding-top: 80px; /* height of topbar + some space */
+}
