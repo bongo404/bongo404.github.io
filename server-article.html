@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Server</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>Tech Nostalgia</h1>
+                <p class="typewriter">Personal Tech Journal</p>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Reading List</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            
+            <hr class="decorative">
+            
+            <div class="sidebar-footer">
+                <p><em>"The dreams of yesterday are the hopes of today and the reality of tomorrow."</em></p>
+                <p>- Robert H. Goddard</p>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Full Article -->
+            <article class="post">
+                <h2 class="post-title">How I Made a Server with an Old Laptop</h2>
+                <p class="post-meta">Published on January 15, 2025 by Kristi</p>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/868e2006-4a0d-492f-8256-f009d37bced5.png" alt="Old laptop being prepared as home server setup">
+                </div>
+
+                <h3>Why I Did This</h3>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1c03472e-f25d-4067-b169-9c8bd91dd05e.png" alt="Dusty old laptop next to network cables">
+                </div>
+                <p>As an IT student with an old laptop gathering dust, I wanted to learn more about servers and Linux, while also making that laptop useful again. Turning it into a personal home server was a perfect project.</p>
+                
+                <h3>Step 1: Choosing the OS</h3>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fb38a572-7413-4ef4-a5de-bbb8d49662e0.png" alt="Laptop screen showing Arch Linux installation">
+                </div>
+                <p>I decided to install <strong>Arch Linux</strong> for more control and learning opportunities. Arch gave me a clean base to build exactly what I needed, and it helped me understand how everything connects under the hood.</p>
+
+                <h3>Step 2: Setting Up File Sharing with Samba</h3>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/63f6ff3a-d8b6-4168-887b-97a607aa964c.png" alt="Terminal showing Samba configuration file">
+                </div>
+                <p>Once Arch was installed and configured, I set up <code>Samba</code> so I could share files across my home network. This allowed me to access files from other devices like my phone or desktop.</p>
+
+                <pre><code>
+[shared]
+   path = /home/kk/shared
+   browsable = yes
+   writable = yes
+   guest ok = yes
+   create mask = 0644
+   directory mask = 0755
+                </code></pre>
+
+                <h3>Step 3: Adding Security</h3>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c44293eb-88bf-4953-aa0a-6a47c9df4b75.png" alt="Terminal showing UFW firewall commands">
+                </div>
+                <p>I didn't want an open network share. I configured user authentication and added a <code>ufw</code> firewall to only allow specific traffic.</p>
+
+                <pre><code>
+sudo ufw allow Samba
+sudo ufw enable
+                </code></pre>
+
+                <h3>Step 4: Hosting My Blog</h3>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7096080b-b37d-4c5b-ac0e-f8391eb15ded.png" alt="Browser showing successful Nginx installation page">
+                </div>
+                <p>Later, I used the same laptop to host my personal blog. I installed <strong>Nginx</strong> and pointed it to my HTML folder. Now, I can access my blog using my local IP or even share it publicly (with proper port forwarding).</p>
+
+                <h3>What I Learned</h3>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fa4f50f0-2580-4462-8189-d82a67ce2cd1.png" alt="Illustration of various Linux server concepts">
+                </div>
+                <ul>
+                    <li>Linux installation and package management</li>
+                    <li>Samba configuration for file sharing</li>
+                    <li>Firewall setup for basic security</li>
+                    <li>Nginx web server hosting</li>
+                </ul>
+
+                <h3>Conclusion</h3>
+                <div class="post-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5727b6bc-598f-4980-ac6e-5ad5126b526c.png" alt="Old laptop running as server with blinking network lights">
+                </div>
+                <p>Turning an old laptop into a home server is one of the best DIY projects for tech students. It’s cheap, practical, and packed with learning.</p>
+            </article>
+
+            <!-- Footer -->
+            <div class="footer">
+                © 2025 Tech Nostalgia • Built with HTML & CSS
+            </div>
+        </div>
+    </div>
+</body>
+</html>
