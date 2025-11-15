@@ -1,0 +1,115 @@
+<!-- index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bongo404 - Home</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/index.css">
+
+    
+</head>
+<body> 
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleLightMode()" aria-label="Toggle light mode">
+        [D]
+    </button>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>bongo404</h1>
+                <p class="typewriter">Profile Found</p>
+            </div>
+           
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">[Home]</a></li>
+                    <li><a href="articles.html">[Articles]</a></li>
+                    <li><a href="projects.html">[Projects]</a></li>
+                    <li><a href="tutorials.html">[Tutorials]</a></li>
+                    <li><a href="#about">[About]</a></li>
+                </ul>
+            </nav>
+           
+            <hr class="decorative">
+
+            <!-- Upcoming Events Calendar -->
+            <div class="calendar">
+                <div class="calendar-header">Upcoming Events</div>
+                <ul class="event-list">
+                    <li class="event-item">
+                        <span class="event-date">OCT 15, 2025</span>
+                        <span class="event-title">Retro Gaming Stream</span>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-date">OCT 22, 2025</span>
+                        <span class="event-title">DOS Programming Workshop</span>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-date">NOV 05, 2025</span>
+                        <span class="event-title">Hardware Restoration Livestream</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="#discord">Discord Community</a></li>
+                    <li><a href="#github">GitHub Projects</a></li>
+                    <li><a href="#rss">RSS Feed</a></li>
+                </ul>
+            </div>
+           
+            <hr class="decorative">
+           
+            <div class="sidebar-footer">
+                <p>"The dreams of yesterday are the hopes of today and the reality of tomorrow."</p>
+                <p>- Robert H. Goddard</p>
+            </div>
+        </div>
+       
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h2 class="hero-title">Homepage</h2>
+                <p class="hero-subtitle">> Exploring the intersection of retro computing and modern development</p>
+            </div>
+
+
+
+            <!-- Hot Posts Section -->
+            <div class="section-header">
+                <h3 class="section-title">🔥 Hot Posts</h3>
+                <a href="articles.html" class="view-all-link">[View All]</a>
+            </div>
+
+            <div class="featured-posts" id="hotPosts">
+                <!-- Hot posts will be inserted here -->
+            </div>
+
+            <!-- Latest Posts Section -->
+            <div class="section-header">
+                <h3 class="section-title">⚡ Latest Posts</h3>
+                <a href="articles.html" class="view-all-link">[View All]</a>
+            </div>
+
+            <div class="featured-posts" id="latestPosts">
+                <!-- Latest posts will be inserted here -->
+            </div>
+           
+            <!-- Footer -->
+            <div class="footer">
+                © 2025 Bongo404
+            </div>
+        </div>
+    </div>
+<script src="../js/index.js"></script>
+</body>
+</html>

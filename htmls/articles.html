@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Tech Nostalgia</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/articles.css">
+</head>
+<body> 
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleLightMode()" aria-label="Toggle light mode">
+        [D]
+    </button>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>bongo404</h1>
+                <p class="typewriter">Articles</p>
+            </div>
+           
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">[Home]</a></li>
+                    <li><a href="articles.html">[Articles]</a></li>
+                    <li><a href="projects.html">[Projects]</a></li>
+                    <li><a href="tutorials.html">[Tutorials]</a></li>
+                    <li><a href="#about">[About]</a></li>
+                </ul>
+            </nav>
+           
+            <hr class="decorative">
+           
+            <!--<div class="sidebar-footer">
+                <p>"The dreams of yesterday are the hopes of today and the reality of tomorrow."</p>
+                <p>- Robert H. Goddard</p>
+            </div> -->
+        </div>
+       
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="articles-header">
+                <h2>Articles Archive</h2>
+                <p>Exploring the intersection of nostalgia and technology</p>
+            </div>
+
+            <!-- Filter and Sort Bar -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-category="all">[All]</button>
+                <button class="filter-btn" data-category="hardware">[Hardware]</button>
+                <button class="filter-btn" data-category="programming">[Programming]</button>
+                <button class="filter-btn" data-category="gaming">[Gaming]</button>
+                <button class="filter-btn" data-category="os">[Operating Systems]</button>
+                <select class="sort-select" id="sortSelect">
+                    <option value="newest">[Sort: Newest First]</option>
+                    <option value="oldest">[Sort: Oldest First]</option>
+                    <option value="title">[Sort: Title A-Z]</option>
+                </select>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Article cards will be dynamically inserted here -->
+            </div>
+
+            <div class="no-articles" id="noArticles" style="display: none;">
+                > No articles found in this category
+            </div>
+           
+            <!-- Footer -->
+            <div class="footer">
+                © 2025 Tech Nostalgia • Built with HTML & CSS & Pixel Dreams
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/articles.js"></script>
+</body>
+</html>

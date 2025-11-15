@@ -1,0 +1,77 @@
+<!-- projects.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Bongo404</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/projects.css">
+   
+</head>
+<body> 
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleLightMode()" aria-label="Toggle light mode">
+        [D]
+    </button>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>bongo404</h1>
+                <p class="typewriter">Projects</p>
+            </div>
+           
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">[Home]</a></li>
+                    <li><a href="articles.html">[Articles]</a></li>
+                    <li><a href="projects.html">[Projects]</a></li>
+                    <li><a href="tutorials.html">[Tutorials]</a></li>
+                    <li><a href="#about">[About]</a></li>
+                </ul>
+            </nav>
+           
+            <hr class="decorative">
+           
+            <!--<div class="sidebar-footer">
+                <p>"The dreams of yesterday are the hopes of today and the reality of tomorrow."</p>
+                <p>- Robert H. Goddard</p>
+            </div> -->
+        </div>
+       
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="projects-header">
+                <h2>My Projects</h2>
+                <p class="projects-intro">A collection of personal projects, experiments, and open-source contributions exploring retro computing, game development, and creative coding.</p>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">[All Projects]</button>
+                <button class="filter-btn" data-filter="completed">[Completed]</button>
+                <button class="filter-btn" data-filter="in-progress">[In Progress]</button>
+                <button class="filter-btn" data-filter="archived">[Archived]</button>
+            </div>
+
+            <!-- Projects List -->
+            <div class="projects-list" id="projectsList">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+
+            <div class="no-projects" id="noProjects" style="display: none;">
+                > No projects found in this category
+            </div>
+           
+            <!-- Footer -->
+            <div class="footer">
+                © 2025 Bongo404 
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/projects.js"></script>
+</body>
+</html>

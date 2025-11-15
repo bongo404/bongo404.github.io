@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials - Bongo404</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tutorials.css">
+    
+</head>
+<body> 
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleLightMode()" aria-label="Toggle light mode">
+        [D]
+    </button>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>bongo404</h1>
+                <p class="typewriter">Tutorials</p>
+            </div>
+           
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">[Home]</a></li>
+                    <li><a href="articles.html">[Articles]</a></li>
+                    <li><a href="projects.html">[Projects]</a></li>
+                    <li><a href="tutorials.html">[Tutorials]</a></li>
+                    <li><a href="#about">[About]</a></li>
+                </ul>
+            </nav>
+           
+            <hr class="decorative">
+           
+            <!--<div class="sidebar-footer">
+                <p>"The dreams of yesterday are the hopes of today and the reality of tomorrow."</p>
+                <p>- Robert H. Goddard</p>
+            </div> -->
+        </div>
+       
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="tutorials-header">
+                <h2>Tutorials</h2>
+                <p class="tutorials-intro">Step-by-step guides covering retro computing, programming, game development, and hardware restoration. Learn by doing.</p>
+            </div>
+
+            <!-- Search and Filter Controls -->
+            <div class="controls-bar">
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="[SEARCH TUTORIALS...]">
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">[All]</button>
+                    <button class="filter-btn" data-filter="beginner">[Beginner]</button>
+                    <button class="filter-btn" data-filter="intermediate">[Intermediate]</button>
+                    <button class="filter-btn" data-filter="advanced">[Advanced]</button>
+                </div>
+            </div>
+
+            <!-- Tutorials List -->
+            <div class="tutorials-list" id="tutorialsList">
+                <!-- Tutorials will be dynamically inserted here -->
+            </div>
+
+            <div class="no-tutorials" id="noTutorials" style="display: none;">
+                > No tutorials found matching your criteria
+            </div>
+           
+            <!-- Footer -->
+            <div class="footer">
+                © 2025 Bongo404
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/tutorials.js"></script>
+</body>
+</html>

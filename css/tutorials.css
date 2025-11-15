@@ -1,0 +1,390 @@
+/* Tutorials page specific styles */
+        .tutorials-header {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tutorials-intro {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        body.light-mode .tutorials-intro {
+            color: #666666;
+        }
+
+        .controls-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--twilight-dark);
+            color: var(--text-light);
+            border: 2px solid var(--twilight-light);
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+            transition: all 0.15s ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--twilight-accent);
+            background-color: var(--twilight-darkest);
+        }
+
+        body.light-mode .search-input {
+            background-color: #ffffff;
+            color: #2d2d2d;
+            border-color: var(--twilight-medium);
+        }
+
+        body.light-mode .search-input:focus {
+            background-color: #f9f9f9;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: var(--twilight-medium);
+            color: var(--text-light);
+            border: 2px solid var(--twilight-light);
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: all 0.15s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--twilight-light);
+            color: var(--twilight-darkest);
+        }
+
+        .filter-btn.active {
+            background-color: var(--twilight-accent);
+            color: var(--twilight-darkest);
+            border-color: var(--twilight-accent);
+        }
+
+        body.light-mode .filter-btn {
+            background-color: #ffffff;
+            color: #2d2d2d;
+            border-color: var(--twilight-medium);
+        }
+
+        body.light-mode .filter-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        body.light-mode .filter-btn.active {
+            background-color: var(--twilight-accent);
+            color: #ffffff;
+        }
+
+        .tutorials-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tutorial-card {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            background-color: var(--twilight-dark);
+            border: 3px solid var(--twilight-medium);
+            padding: 25px;
+            transition: all 0.2s ease;
+            box-shadow: var(--pixel-shadow) var(--twilight-medium);
+            align-items: start;
+        }
+
+        .tutorial-card:hover {
+            border-color: var(--twilight-accent);
+            transform: translateX(5px);
+            box-shadow: 6px 6px 0px var(--twilight-light);
+        }
+
+        body.light-mode .tutorial-card {
+            background-color: #ffffff;
+            border-color: #cccccc;
+            box-shadow: var(--pixel-shadow) #999999;
+        }
+
+        body.light-mode .tutorial-card:hover {
+            border-color: var(--twilight-medium);
+            box-shadow: 6px 6px 0px var(--twilight-medium);
+        }
+
+        .tutorial-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tutorial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tutorial-title {
+            font-size: 1.8rem;
+            color: var(--twilight-accent);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        body.light-mode .tutorial-title {
+            color: var(--twilight-medium);
+        }
+
+        .tutorial-difficulty {
+            padding: 5px 12px;
+            background-color: var(--twilight-medium);
+            color: var(--twilight-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--twilight-accent);
+            font-weight: bold;
+        }
+
+        .tutorial-difficulty.beginner {
+            background-color: #2ecc71;
+            border-color: #2ecc71;
+            color: var(--twilight-darkest);
+        }
+
+        .tutorial-difficulty.intermediate {
+            background-color: var(--twilight-accent);
+            border-color: var(--twilight-accent);
+            color: var(--twilight-darkest);
+        }
+
+        .tutorial-difficulty.advanced {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+            color: #ffffff;
+        }
+
+        body.light-mode .tutorial-difficulty {
+            background-color: #f0f0f0;
+            border-color: var(--twilight-medium);
+        }
+
+        .tutorial-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .tutorial-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        body.light-mode .tutorial-meta {
+            color: #666666;
+        }
+
+        .tutorial-description {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        body.light-mode .tutorial-description {
+            color: #2d2d2d;
+        }
+
+        .tutorial-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 5px 10px;
+            background-color: var(--twilight-darkest);
+            color: var(--twilight-light);
+            border: 2px solid var(--twilight-medium);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        body.light-mode .tag {
+            background-color: #f5f5f5;
+            border-color: #cccccc;
+            color: #2d2d2d;
+        }
+
+        .tutorial-btn {
+            padding: 10px 20px;
+            background-color: var(--twilight-medium);
+            color: var(--twilight-accent);
+            border: 2px solid var(--twilight-accent);
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .tutorial-btn:hover {
+            background-color: var(--twilight-accent);
+            color: var(--twilight-darkest);
+        }
+
+        body.light-mode .tutorial-btn {
+            background-color: #ffffff;
+            border-color: var(--twilight-medium);
+            color: var(--twilight-medium);
+        }
+
+        body.light-mode .tutorial-btn:hover {
+            background-color: var(--twilight-medium);
+            color: #ffffff;
+        }
+
+        .tutorial-chapters {
+            width: 350px;
+            background-color: var(--twilight-darkest);
+            border: 3px solid var(--twilight-light);
+            padding: 20px;
+            box-shadow: var(--pixel-shadow) var(--twilight-medium);
+        }
+
+        .chapters-header {
+            color: var(--twilight-accent);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--twilight-light);
+            padding-bottom: 8px;
+        }
+
+        .chapters-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .chapter-item {
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background-color: var(--twilight-dark);
+            border-left: 3px solid var(--twilight-medium);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.15s ease;
+        }
+
+        .chapter-item:hover {
+            border-left-color: var(--twilight-accent);
+            background-color: var(--twilight-medium);
+        }
+
+        .chapter-item::before {
+            content: none;
+        }
+
+        .chapter-number {
+            color: var(--twilight-accent);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        body.light-mode .tutorial-chapters {
+            background-color: #ffffff;
+            border-color: #cccccc;
+        }
+
+        body.light-mode .chapter-item {
+            background-color: #f5f5f5;
+            color: #2d2d2d;
+        }
+
+        body.light-mode .chapter-item:hover {
+            background-color: #e0e0e0;
+        }
+
+        .no-tutorials {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 1024px) {
+            .tutorial-card {
+                grid-template-columns: 1fr 300px;
+            }
+
+            .tutorial-chapters {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tutorial-card {
+                grid-template-columns: 1fr;
+            }
+
+            .tutorial-chapters {
+                width: 100%;
+            }
+
+            .controls-bar {
+                flex-direction: column;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .filter-bar {
+                width: 100%;
+            }
+
+            .tutorial-title {
+                font-size: 1.4rem;
+            }
+        }

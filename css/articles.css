@@ -1,0 +1,165 @@
+/* Additional styles for articles page */
+        .articles-header {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .filter-btn, .sort-select {
+            padding: 10px 20px;
+            background-color: var(--twilight-medium);
+            color: var(--text-light);
+            border: 2px solid var(--twilight-light);
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: all 0.15s ease;
+        }
+
+        .filter-btn:hover, .sort-select:hover {
+            background-color: var(--twilight-light);
+            color: var(--twilight-darkest);
+        }
+
+        .filter-btn.active {
+            background-color: var(--twilight-accent);
+            color: var(--twilight-darkest);
+            border-color: var(--twilight-accent);
+        }
+
+        .sort-select {
+            padding: 10px 15px;
+        }
+
+        body.light-mode .filter-btn,
+        body.light-mode .sort-select {
+            background-color: #ffffff;
+            color: #2d2d2d;
+            border-color: var(--twilight-medium);
+        }
+
+        body.light-mode .filter-btn:hover,
+        body.light-mode .sort-select:hover {
+            background-color: #f0f0f0;
+        }
+
+        body.light-mode .filter-btn.active {
+            background-color: var(--twilight-accent);
+            color: #ffffff;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-card {
+            background-color: var(--twilight-dark);
+            border: 3px solid var(--twilight-medium);
+            padding: 20px;
+            transition: all 0.2s ease;
+            box-shadow: var(--pixel-shadow) var(--twilight-medium);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            border-color: var(--twilight-accent);
+            transform: translateY(-3px);
+            box-shadow: 4px 4px 0px var(--twilight-light);
+        }
+
+        body.light-mode .article-card {
+            background-color: #ffffff;
+            border-color: #cccccc;
+            box-shadow: var(--pixel-shadow) #999999;
+        }
+
+        body.light-mode .article-card:hover {
+            border-color: var(--twilight-medium);
+            box-shadow: 4px 4px 0px var(--twilight-medium);
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: var(--twilight-medium);
+            color: var(--twilight-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 2px solid var(--twilight-accent);
+        }
+
+        body.light-mode .article-category {
+            background-color: #f0f0f0;
+            border-color: var(--twilight-medium);
+            color: var(--twilight-medium);
+        }
+
+        .article-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .article-date {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        body.light-mode .article-date {
+            color: #666666;
+        }
+
+        .article-excerpt {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        body.light-mode .article-excerpt {
+            color: #2d2d2d;
+        }
+
+        .article-card .read-more {
+            padding: 10px 20px;
+            font-size: 1rem;
+            align-self: flex-start;
+        }
+
+        .no-articles {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+            }
+        }

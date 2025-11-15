@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming for Beginners - Tech Nostalgia</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Tutorial page specific styles */
+        .tutorial-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tutorial-nav-section {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tutorial-nav-header {
+            color: var(--twilight-accent);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--twilight-light);
+            padding-bottom: 8px;
+        }
+
+        .chapter-nav {
+            list-style: none;
+            margin: 0;
+        }
+
+        .chapter-nav li {
+            margin-bottom: 5px;
+        }
+
+        .chapter-nav li::before {
+            content: none;
+        }
+
+        .chapter-link {
+            display: block;
+            padding: 8px 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            border-left: 3px solid transparent;
+            transition: all 0.15s ease;
+            background-color: var(--twilight-darkest);
+        }
+
+        .chapter-link:hover {
+            color: var(--twilight-accent);
+            border-left-color: var(--twilight-accent);
+            background-color: var(--twilight-medium);
+        }
+
+        .chapter-link.active {
+            color: var(--twilight-accent);
+            background-color: var(--twilight-medium);
+            border-left-color: var(--twilight-accent);
+            font-weight: bold;
+        }
+
+        body.light-mode .chapter-link {
+            color: #666666;
+            background-color: #ffffff;
+        }
+
+        body.light-mode .chapter-link:hover {
+            color: var(--twilight-medium);
+            background-color: #f0f0f0;
+        }
+
+        body.light-mode .chapter-link.active {
+            background-color: #e0e0e0;
+        }
+
+        .notes-section {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--twilight-accent);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--twilight-light);
+            padding-bottom: 8px;
+        }
+
+        .clear-notes-btn {
+            background-color: var(--twilight-medium);
+            border: 2px solid var(--twilight-light);
+            color: var(--twilight-light);
+            padding: 4px 10px;
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 1rem;
+            transition: all 0.15s ease;
+        }
+
+        .clear-notes-btn:hover {
+            background-color: var(--twilight-light);
+            color: var(--twilight-darkest);
+        }
+
+        body.light-mode .clear-notes-btn {
+            background-color: #ffffff;
+            border-color: var(--twilight-medium);
+            color: var(--twilight-medium);
+        }
+
+        body.light-mode .clear-notes-btn:hover {
+            background-color: var(--twilight-medium);
+            color: #ffffff;
+        }
+
+        .notes-textarea {
+            width: 100%;
+            min-height: 150px;
+            max-height: 300px;
+            background-color: var(--twilight-darkest);
+            color: var(--text-light);
+            border: 2px solid var(--twilight-medium);
+            padding: 12px;
+            font-family: 'VT323', monospace;
+            font-size: 1.05rem;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .notes-textarea:focus {
+            outline: none;
+            border-color: var(--twilight-accent);
+        }
+
+        .notes-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        body.light-mode .notes-textarea {
+            background-color: #ffffff;
+            color: #2d2d2d;
+            border-color: #cccccc;
+        }
+
+        body.light-mode .notes-textarea:focus {
+            border-color: var(--twilight-medium);
+        }
+
+        .tutorial-header {
+            margin-bottom: 30px;
+        }
+
+        .tutorial-title {
+            font-size: 2.2rem;
+            color: var(--twilight-accent);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid var(--twilight-light);
+            padding-bottom: 12px;
+        }
+
+        .tutorial-meta-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        body.light-mode .tutorial-meta-bar {
+            color: #666666;
+        }
+
+        .tutorial-intro {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--twilight-dark);
+            border-left: 4px solid var(--twilight-accent);
+        }
+
+        body.light-mode .tutorial-intro {
+            color: #2d2d2d;
+            background-color: #f9f9f9;
+        }
+
+        .chapter-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 20px;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            color: var(--twilight-light);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 5px solid var(--twilight-accent);
+            padding-left: 15px;
+        }
+
+        body.light-mode .chapter-title {
+            color: var(--twilight-medium);
+        }
+
+        .chapter-content p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .code-block {
+            background-color: var(--twilight-darkest);
+            border: 3px solid var(--twilight-medium);
+            padding: 20px;
+            padding-top: 30px;
+            margin: 25px 0;
+            margin-top: 35px;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: attr(data-lang);
+            position: absolute;
+            top: -2px;
+            left: 15px;
+            background-color: var(--twilight-accent);
+            color: var(--twilight-darkest);
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border: 2px solid var(--twilight-medium);
+            z-index: 1;
+        }
+
+        .copy-code-btn {
+            position: absolute;
+            top: -2px;
+            right: 15px;
+            background-color: var(--twilight-medium);
+            border: 2px solid var(--twilight-light);
+            color: var(--twilight-light);
+            padding: 6px 14px;
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.15s ease;
+            z-index: 2;
+        }
+
+        .copy-code-btn:hover {
+            background-color: var(--twilight-light);
+            color: var(--twilight-darkest);
+        }
+
+        .copy-code-btn.copied {
+            background-color: #2ecc71;
+            border-color: #2ecc71;
+            color: var(--twilight-darkest);
+        }
+
+        body.light-mode .copy-code-btn {
+            background-color: #ffffff;
+            border-color: var(--twilight-medium);
+            color: var(--twilight-medium);
+        }
+
+        body.light-mode .copy-code-btn:hover {
+            background-color: var(--twilight-medium);
+            color: #ffffff;
+        }
+
+        .code-block code {
+            font-family: 'VT323', monospace;
+            font-size: 1.15rem;
+            color: var(--twilight-accent);
+            line-height: 1.6;
+            display: block;
+        }
+
+        body.light-mode .code-block {
+            background-color: #2d2d2d;
+            border-color: #666666;
+        }
+
+        .info-box {
+            background-color: var(--twilight-medium);
+            border: 3px solid var(--twilight-accent);
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 5px solid var(--twilight-accent);
+        }
+
+        .info-box-title {
+            color: var(--twilight-accent);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        body.light-mode .info-box {
+            background-color: #fff8e1;
+            border-color: var(--twilight-medium);
+        }
+
+        body.light-mode .info-box p {
+            color: #2d2d2d;
+        }
+
+        .exercise-box {
+            background-color: var(--twilight-dark);
+            border: 3px solid var(--twilight-light);
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .exercise-title {
+            color: var(--twilight-light);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .exercise-box p {
+            color: var(--text-light);
+        }
+
+        body.light-mode .exercise-box {
+            background-color: #f5f5f5;
+            border-color: var(--twilight-medium);
+        }
+
+        body.light-mode .exercise-box p {
+            color: #2d2d2d;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 3px solid var(--twilight-medium);
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background-color: var(--twilight-medium);
+            color: var(--twilight-accent);
+            border: 2px solid var(--twilight-accent);
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--twilight-accent);
+            color: var(--twilight-darkest);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        body.light-mode .nav-btn {
+            background-color: #ffffff;
+            border-color: var(--twilight-medium);
+            color: var(--twilight-medium);
+        }
+
+        body.light-mode .nav-btn:hover {
+            background-color: var(--twilight-medium);
+            color: #ffffff;
+        }
+
+        .breadcrumb {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--twilight-accent);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--twilight-light);
+        }
+
+        body.light-mode .breadcrumb {
+            color: #666666;
+        }
+
+        @media (max-width: 768px) {
+            .tutorial-title {
+                font-size: 1.6rem;
+            }
+
+            .chapter-title {
+                font-size: 1.4rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body> 
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleLightMode()" aria-label="Toggle light mode">
+        [D]
+    </button>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>bongo404</h1>
+                <p class="typewriter">Profile Found</p>
+            </div>
+           
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">[Home]</a></li>
+                    <li><a href="articles.html">[Articles]</a></li>
+                    <li><a href="projects.html">[Projects]</a></li>
+                    <li><a href="tutorials.html">[Tutorials]</a></li>
+                    <li><a href="#about">[About]</a></li>
+                </ul>
+            </nav>
+           
+            <hr class="decorative">
+
+            <!-- Tutorial Navigation -->
+            <div class="tutorial-nav-section">
+                <div class="tutorial-nav-header">Tutorial Chapters</div>
+                <ul class="chapter-nav">
+                    <li><a href="#chapter1" class="chapter-link" data-chapter="1">1. Getting Started</a></li>
+                    <li><a href="#chapter2" class="chapter-link" data-chapter="2">2. Your First Program</a></li>
+                    <li><a href="#chapter3" class="chapter-link" data-chapter="3">3. Variables & Data Types</a></li>
+                    <li><a href="#chapter4" class="chapter-link" data-chapter="4">4. Input & Output</a></li>
+                    <li><a href="#chapter5" class="chapter-link" data-chapter="5">5. Control Flow</a></li>
+                    <li><a href="#chapter6" class="chapter-link" data-chapter="6">6. Functions</a></li>
+                    <li><a href="#chapter7" class="chapter-link" data-chapter="7">7. Arrays</a></li>
+                    <li><a href="#chapter8" class="chapter-link" data-chapter="8">8. Final Project</a></li>
+                </ul>
+            </div>
+
+            <hr class="decorative">
+
+            <!-- Notes Section -->
+            <div class="notes-section">
+                <div class="notes-header">
+                    <span>Quick Notes</span>
+                    <button class="clear-notes-btn" onclick="clearNotes()" title="Clear all notes">[X]</button>
+                </div>
+                <textarea id="tutorialNotes" class="notes-textarea" placeholder="Type your notes here..."></textarea>
+            </div>
+           
+            <hr class="decorative">
+           
+            <div class="sidebar-footer">
+                <p>"The dreams of yesterday are the hopes of today and the reality of tomorrow."</p>
+                <p>- Robert H. Goddard</p>
+            </div>
+        </div>
+       
+        <!-- Main Tutorial Content -->
+        <div class="main-content">
+            <div class="tutorial-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> > <a href="tutorials.html">Tutorials</a> > C Programming for Beginners
+                </div>
+
+                <div class="tutorial-header">
+                    <h2 class="tutorial-title">C Programming for Beginners</h2>
+                    <div class="tutorial-meta-bar">
+                        <span>📚 Beginner</span>
+                        <span>⏱️ 6 hours</span>
+                        <span>📝 8 Chapters</span>
+                        <span>💻 Programming</span>
+                    </div>
+                    <div class="tutorial-intro">
+                        Welcome to C Programming for Beginners! This tutorial will guide you through the fundamentals of C, one of the most influential programming languages ever created. You'll learn everything from basic syntax to building your first real program. No prior programming experience required.
+                    </div>
+                </div>
+
+                <!-- Chapter 1 -->
+                <section class="chapter-section" id="chapter1">
+                    <h3 class="chapter-title">Chapter 1: Getting Started</h3>
+                    <div class="chapter-content">
+                        <p>C is a powerful general-purpose programming language created by Dennis Ritchie in 1972. It's been the foundation for operating systems, embedded systems, and countless other applications. Learning C gives you a deep understanding of how computers work at a fundamental level.</p>
+
+                        <p>Before we write code, you'll need to set up your development environment. For this tutorial, we recommend using GCC (GNU Compiler Collection), which is available on Windows, macOS, and Linux.</p>
+
+                        <div class="info-box">
+                            <div class="info-box-title">📦 Installation Guide</div>
+                            <p><strong>Windows:</strong> Install MinGW or use WSL (Windows Subsystem for Linux)</p>
+                            <p><strong>macOS:</strong> Install Xcode Command Line Tools: xcode-select --install</p>
+                            <p><strong>Linux:</strong> Install GCC: sudo apt-get install build-essential</p>
+                        </div>
+
+                        <p>Once installed, verify your setup by opening a terminal and typing:</p>
+
+                        <div class="code-block" data-lang="BASH">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>gcc --version</code>
+                        </div>
+
+                        <p>You should see version information displayed. You're now ready to start programming!</p>
+                    </div>
+                </section>
+
+                <!-- Chapter 2 -->
+                <section class="chapter-section" id="chapter2">
+                    <h3 class="chapter-title">Chapter 2: Your First Program</h3>
+                    <div class="chapter-content">
+                        <p>Let's write the classic "Hello, World!" program. Create a new file called hello.c and type the following code:</p>
+
+                        <div class="code-block" data-lang="C">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code>
+                        </div>
+
+                        <p>Let's break down what each part does:</p>
+
+                        <p><strong>#include &lt;stdio.h&gt;</strong> - This line includes the Standard Input/Output library, which gives us access to printf() and other I/O functions.</p>
+
+                        <p><strong>int main()</strong> - This is the main function where program execution begins. Every C program must have exactly one main() function.</p>
+
+                        <p><strong>printf()</strong> - This function prints text to the console. The \n creates a new line.</p>
+
+                        <p><strong>return 0;</strong> - This tells the operating system that the program finished successfully.</p>
+
+                        <p>To compile and run your program:</p>
+
+                        <div class="code-block" data-lang="BASH">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>gcc hello.c -o hello
+./hello</code>
+                        </div>
+
+                        <div class="exercise-box">
+                            <div class="exercise-title">💪 Exercise</div>
+                            <p>Modify the program to print your name instead of "World". Try adding multiple printf() statements to print on different lines.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chapter 3 -->
+                <section class="chapter-section" id="chapter3">
+                    <h3 class="chapter-title">Chapter 3: Variables & Data Types</h3>
+                    <div class="chapter-content">
+                        <p>Variables are containers that hold data. In C, you must declare variables with their type before using them. Here are the fundamental data types:</p>
+
+                        <div class="code-block" data-lang="C">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>int age = 25;           // Integer numbers
+float price = 19.99;     // Decimal numbers
+char grade = 'A';        // Single characters
+double pi = 3.14159;     // High-precision decimals</code>
+                        </div>
+
+                        <p>The type tells the compiler how much memory to allocate and how to interpret the data. Each type has different size and range limitations.</p>
+
+                        <div class="info-box">
+                            <div class="info-box-title">📊 Common Data Types</div>
+                            <p><strong>int:</strong> Typically 4 bytes, range -2,147,483,648 to 2,147,483,647</p>
+                            <p><strong>float:</strong> 4 bytes, ~6-7 decimal digits precision</p>
+                            <p><strong>double:</strong> 8 bytes, ~15-16 decimal digits precision</p>
+                            <p><strong>char:</strong> 1 byte, single ASCII character</p>
+                        </div>
+
+                        <p>Here's a complete example using different types:</p>
+
+                        <div class="code-block" data-lang="C">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>#include &lt;stdio.h&gt;
+
+int main() {
+    int score = 95;
+    float temperature = 72.5;
+    char initial = 'J';
+    
+    printf("Score: %d\n", score);
+    printf("Temperature: %.1f\n", temperature);
+    printf("Initial: %c\n", initial);
+    
+    return 0;
+}</code>
+                        </div>
+
+                        <div class="exercise-box">
+                            <div class="exercise-title">💪 Exercise</div>
+                            <p>Create variables to store your age, height (in meters), and first initial. Print them using appropriate format specifiers.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chapter 4 -->
+                <section class="chapter-section" id="chapter4">
+                    <h3 class="chapter-title">Chapter 4: Input & Output</h3>
+                    <div class="chapter-content">
+                        <p>So far we've only printed output. Now let's learn to get input from users using scanf():</p>
+
+                        <div class="code-block" data-lang="C">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    printf("You are %d years old.\n", age);
+    
+    return 0;
+}</code>
+                        </div>
+
+                        <p>The & symbol (address-of operator) is crucial - it tells scanf() where to store the input value in memory.</p>
+
+                        <div class="info-box">
+                            <div class="info-box-title">⚠️ Important Note</div>
+                            <p>Always use & with scanf() for basic types (int, float, char). This is one of the most common mistakes beginners make!</p>
+                        </div>
+
+                        <div class="exercise-box">
+                            <div class="exercise-title">💪 Exercise</div>
+                            <p>Write a program that asks for two numbers, adds them together, and displays the result.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chapter 5 -->
+                <section class="chapter-section" id="chapter5">
+                    <h3 class="chapter-title">Chapter 5: Control Flow</h3>
+                    <div class="chapter-content">
+                        <p>Control flow statements let your program make decisions and repeat actions. The if statement checks conditions:</p>
+
+                        <div class="code-block" data-lang="C">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    if (age >= 18) {
+        printf("You are an adult.\n");
+    } else {
+        printf("You are a minor.\n");
+    }
+    
+    return 0;
+}</code>
+                        </div>
+
+                        <p>For repeating actions, use loops. Here's a for loop that counts from 1 to 5:</p>
+
+                        <div class="code-block" data-lang="C">
+                            <button class="copy-code-btn" onclick="copyCode(this)">COPY</button>
+                            <code>for (int i = 1; i <= 5; i++) {
+    printf("%d\n", i);
+}</code>
+                        </div>
+
+                        <div class="exercise-box">
+                            <div class="exercise-title">💪 Exercise</div>
+                            <p>Write a program that checks if a number is positive, negative, or zero. Then create a loop that prints the multiplication table for any number.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons">
+                    <a href="tutorials.html" class="nav-btn">[← Back to Tutorials]</a>
+                    <a href="#chapter1" class="nav-btn">[↑ Back to Top]</a>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer">
+                    © 2025 Tech Nostalgia • Built with HTML & CSS & Pixel Dreams
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Active chapter highlighting
+        function updateActiveChapter() {
+            const chapters = document.querySelectorAll('.chapter-section');
+            const links = document.querySelectorAll('.chapter-link');
+            
+            let activeChapter = null;
+            
+            chapters.forEach(chapter => {
+                const rect = chapter.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    activeChapter = chapter.id;
+                }
+            });
+            
+            links.forEach(link => {
+                const href = link.getAttribute('href').substring(1);
+                if (href === activeChapter) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('.chapter-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Update active chapter on scroll
+        window.addEventListener('scroll', updateActiveChapter);
+        window.addEventListener('load', updateActiveChapter);
+
+        // Theme toggle
+        let isLightMode = false;
+
+        function toggleLightMode() {
+            const body = document.body;
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            
+            if (isLightMode) {
+                body.classList.remove('light-mode');
+                toggleBtn.innerHTML = '[D]';
+                toggleBtn.setAttribute('aria-label', 'Switch to light mode');
+                localStorage.setItem('theme', 'dark');
+                isLightMode = false;
+            } else {
+                body.classList.add('light-mode');
+                toggleBtn.innerHTML = '[L]';
+                toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+                localStorage.setItem('theme', 'light');
+                isLightMode = true;
+            }
+        }
+
+        // Initialize theme
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                toggleLightMode();
+            }
+        }
+
+        // Keyboard shortcut (Ctrl/Cmd + D)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+                e.preventDefault();
+                toggleLightMode();
+            }
+        });
+
+        // Initialize
+        initTheme();
+
+        // Notes functionality (stored in memory during session)
+        let notesContent = '';
+
+        const notesTextarea = document.getElementById('tutorialNotes');
+        
+        if (notesTextarea) {
+            // Load notes from memory
+            notesTextarea.value = notesContent;
+
+            // Save notes as user types
+            notesTextarea.addEventListener('input', function(e) {
+                notesContent = e.target.value;
+            });
+        }
+
+        function clearNotes() {
+            if (confirm('Are you sure you want to clear all notes?')) {
+                notesContent = '';
+                document.getElementById('tutorialNotes').value = '';
+            }
+        }
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            const codeText = codeBlock.textContent;
+            
+            // Create temporary textarea to copy from
+            const textarea = document.createElement('textarea');
+            textarea.value = codeText;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const originalText = button.textContent;
+                button.textContent = 'COPIED!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                button.textContent = 'FAILED';
+                setTimeout(() => {
+                    button.textContent = 'COPY';
+                }, 2000);
+            }
+            
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>
