@@ -1,0 +1,460 @@
+/* Tutorial page specific styles */
+.tutorial-content {
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.tutorial-nav-section {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.tutorial-nav-header {
+    color: var(--twilight-accent);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--twilight-light);
+    padding-bottom: 8px;
+}
+
+.chapter-nav {
+    list-style: none;
+    margin: 0;
+}
+
+.chapter-nav li {
+    margin-bottom: 5px;
+}
+
+.chapter-nav li::before {
+    content: none;
+}
+
+.chapter-link {
+    display: block;
+    padding: 8px 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1rem;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+    background-color: var(--twilight-darkest);
+}
+
+.chapter-link:hover {
+    color: var(--twilight-accent);
+    border-left-color: var(--twilight-accent);
+    background-color: var(--twilight-medium);
+}
+
+.chapter-link.active {
+    color: var(--twilight-accent);
+    background-color: var(--twilight-medium);
+    border-left-color: var(--twilight-accent);
+    font-weight: bold;
+}
+
+body.light-mode .chapter-link {
+    color: #666666;
+    background-color: #ffffff;
+}
+
+body.light-mode .chapter-link:hover {
+    color: var(--twilight-medium);
+    background-color: #f0f0f0;
+}
+
+body.light-mode .chapter-link.active {
+    background-color: #e0e0e0;
+}
+
+.notes-section {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--twilight-accent);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--twilight-light);
+    padding-bottom: 8px;
+}
+
+.clear-notes-btn {
+    background-color: var(--twilight-medium);
+    border: 2px solid var(--twilight-light);
+    color: var(--twilight-light);
+    padding: 4px 10px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    transition: all 0.15s ease;
+}
+
+.clear-notes-btn:hover {
+    background-color: var(--twilight-light);
+    color: var(--twilight-darkest);
+}
+
+body.light-mode .clear-notes-btn {
+    background-color: #ffffff;
+    border-color: var(--twilight-medium);
+    color: var(--twilight-medium);
+}
+
+body.light-mode .clear-notes-btn:hover {
+    background-color: var(--twilight-medium);
+    color: #ffffff;
+}
+
+.notes-textarea {
+    width: 100%;
+    min-height: 150px;
+    max-height: 300px;
+    background-color: var(--twilight-darkest);
+    color: var(--text-light);
+    border: 2px solid var(--twilight-medium);
+    padding: 12px;
+    font-family: 'VT323', monospace;
+    font-size: 1.05rem;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.notes-textarea:focus {
+    outline: none;
+    border-color: var(--twilight-accent);
+}
+
+.notes-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+body.light-mode .notes-textarea {
+    background-color: #ffffff;
+    color: #2d2d2d;
+    border-color: #cccccc;
+}
+
+body.light-mode .notes-textarea:focus {
+    border-color: var(--twilight-medium);
+}
+
+.tutorial-header {
+    margin-bottom: 30px;
+}
+
+.tutorial-title {
+    font-size: 2.2rem;
+    color: var(--twilight-accent);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid var(--twilight-light);
+    padding-bottom: 12px;
+}
+
+.tutorial-meta-bar {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+body.light-mode .tutorial-meta-bar {
+    color: #666666;
+}
+
+.tutorial-intro {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--twilight-dark);
+    border-left: 4px solid var(--twilight-accent);
+}
+
+body.light-mode .tutorial-intro {
+    color: #2d2d2d;
+    background-color: #f9f9f9;
+}
+
+.chapter-section {
+    margin-bottom: 50px;
+    scroll-margin-top: 20px;
+}
+
+.chapter-title {
+    font-size: 1.8rem;
+    color: var(--twilight-light);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 5px solid var(--twilight-accent);
+    padding-left: 15px;
+}
+
+body.light-mode .chapter-title {
+    color: var(--twilight-medium);
+}
+
+.chapter-content p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.code-block {
+    background-color: var(--twilight-darkest);
+    border: 3px solid var(--twilight-medium);
+    padding: 20px;
+    padding-top: 30px;
+    margin: 25px 0;
+    margin-top: 35px;
+    overflow-x: auto;
+    position: relative;
+}
+
+.code-block::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: -2px;
+    left: 15px;
+    background-color: var(--twilight-accent);
+    color: var(--twilight-darkest);
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid var(--twilight-medium);
+    z-index: 1;
+}
+
+.copy-code-btn {
+    position: absolute;
+    top: -2px;
+    right: 15px;
+    background-color: var(--twilight-medium);
+    border: 2px solid var(--twilight-light);
+    color: var(--twilight-light);
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.15s ease;
+    z-index: 2;
+}
+
+.copy-code-btn:hover {
+    background-color: var(--twilight-light);
+    color: var(--twilight-darkest);
+}
+
+.copy-code-btn.copied {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+    color: var(--twilight-darkest);
+}
+
+body.light-mode .copy-code-btn {
+    background-color: #ffffff;
+    border-color: var(--twilight-medium);
+    color: var(--twilight-medium);
+}
+
+body.light-mode .copy-code-btn:hover {
+    background-color: var(--twilight-medium);
+    color: #ffffff;
+}
+
+.code-block code {
+    font-family: 'VT323', monospace;
+    font-size: 1.15rem;
+    color: var(--twilight-accent);
+    line-height: 1.6;
+    display: block;
+    white-space: pre-wrap;
+}
+
+body.light-mode .code-block {
+    background-color: #2d2d2d;
+    border-color: #666666;
+}
+
+.info-box {
+    background-color: var(--twilight-medium);
+    border: 3px solid var(--twilight-accent);
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid var(--twilight-accent);
+}
+
+.info-box-title {
+    color: var(--twilight-accent);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-box p {
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+body.light-mode .info-box {
+    background-color: #fff8e1;
+    border-color: var(--twilight-medium);
+}
+
+body.light-mode .info-box p {
+    color: #2d2d2d;
+}
+
+.exercise-box {
+    background-color: var(--twilight-dark);
+    border: 3px solid var(--twilight-light);
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.exercise-title {
+    color: var(--twilight-light);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.exercise-box p {
+    color: var(--text-light);
+}
+
+body.light-mode .exercise-box {
+    background-color: #f5f5f5;
+    border-color: var(--twilight-medium);
+}
+
+body.light-mode .exercise-box p {
+    color: #2d2d2d;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 3px solid var(--twilight-medium);
+}
+
+.nav-btn {
+    padding: 12px 25px;
+    background-color: var(--twilight-medium);
+    color: var(--twilight-accent);
+    border: 2px solid var(--twilight-accent);
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-btn:hover {
+    background-color: var(--twilight-accent);
+    color: var(--twilight-darkest);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+body.light-mode .nav-btn {
+    background-color: #ffffff;
+    border-color: var(--twilight-medium);
+    color: var(--twilight-medium);
+}
+
+body.light-mode .nav-btn:hover {
+    background-color: var(--twilight-medium);
+    color: #ffffff;
+}
+
+.breadcrumb {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: var(--twilight-accent);
+}
+
+.breadcrumb a:hover {
+    color: var(--twilight-light);
+}
+
+body.light-mode .breadcrumb {
+    color: #666666;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--twilight-accent);
+    font-size: 1.5rem;
+}
+
+.error-message {
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 20px;
+    margin: 30px 0;
+    border: 3px solid #c0392b;
+    font-size: 1.2rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .tutorial-title {
+        font-size: 1.6rem;
+    }
+
+    .chapter-title {
+        font-size: 1.4rem;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+    }
+
+    .code-block {
+        padding: 15px;
+        padding-top: 40px;
+    }
+
+    .copy-code-btn {
+        right: 10px;
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+}

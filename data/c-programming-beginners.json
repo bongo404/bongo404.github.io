@@ -1,0 +1,279 @@
+{
+  "id": "c-programming-beginners",
+  "title": "C Programming for Beginners",
+  "difficulty": "beginner",
+  "category": "Programming",
+  "duration": "6 hours",
+  "totalChapters": 8,
+  "description": "Welcome to C Programming for Beginners! This tutorial will guide you through the fundamentals of C, one of the most influential programming languages ever created. You'll learn everything from basic syntax to building your first real program. No prior programming experience required.",
+  "chapters": [
+    {
+      "id": "chapter1",
+      "number": 1,
+      "title": "Getting Started",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "C is a powerful general-purpose programming language created by Dennis Ritchie in 1972. It's been the foundation for operating systems, embedded systems, and countless other applications. Learning C gives you a deep understanding of how computers work at a fundamental level."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before we write code, you'll need to set up your development environment. For this tutorial, we recommend using GCC (GNU Compiler Collection), which is available on Windows, macOS, and Linux."
+        },
+        {
+          "type": "info-box",
+          "title": "📦 Installation Guide",
+          "items": [
+            "<strong>Windows:</strong> Install MinGW or use WSL (Windows Subsystem for Linux)",
+            "<strong>macOS:</strong> Install Xcode Command Line Tools: xcode-select --install",
+            "<strong>Linux:</strong> Install GCC: sudo apt-get install build-essential"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Once installed, verify your setup by opening a terminal and typing:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "gcc --version"
+        },
+        {
+          "type": "paragraph",
+          "text": "You should see version information displayed. You're now ready to start programming!"
+        }
+      ]
+    },
+    {
+      "id": "chapter2",
+      "number": 2,
+      "title": "Your First Program",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Let's write the classic \"Hello, World!\" program. Create a new file called hello.c and type the following code:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Let's break down what each part does:"
+        },
+        {
+          "type": "paragraph",
+          "text": "<strong>#include &lt;stdio.h&gt;</strong> - This line includes the Standard Input/Output library, which gives us access to printf() and other I/O functions."
+        },
+        {
+          "type": "paragraph",
+          "text": "<strong>int main()</strong> - This is the main function where program execution begins. Every C program must have exactly one main() function."
+        },
+        {
+          "type": "paragraph",
+          "text": "<strong>printf()</strong> - This function prints text to the console. The \\n creates a new line."
+        },
+        {
+          "type": "paragraph",
+          "text": "<strong>return 0;</strong> - This tells the operating system that the program finished successfully."
+        },
+        {
+          "type": "paragraph",
+          "text": "To compile and run your program:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "gcc hello.c -o hello\n./hello"
+        },
+        {
+          "type": "exercise",
+          "title": "💪 Exercise",
+          "text": "Modify the program to print your name instead of \"World\". Try adding multiple printf() statements to print on different lines."
+        }
+      ]
+    },
+    {
+      "id": "chapter3",
+      "number": 3,
+      "title": "Variables & Data Types",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Variables are containers that hold data. In C, you must declare variables with their type before using them. Here are the fundamental data types:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "int age = 25;           // Integer numbers\nfloat price = 19.99;     // Decimal numbers\nchar grade = 'A';        // Single characters\ndouble pi = 3.14159;     // High-precision decimals"
+        },
+        {
+          "type": "paragraph",
+          "text": "The type tells the compiler how much memory to allocate and how to interpret the data. Each type has different size and range limitations."
+        },
+        {
+          "type": "info-box",
+          "title": "📊 Common Data Types",
+          "items": [
+            "<strong>int:</strong> Typically 4 bytes, range -2,147,483,648 to 2,147,483,647",
+            "<strong>float:</strong> 4 bytes, ~6-7 decimal digits precision",
+            "<strong>double:</strong> 8 bytes, ~15-16 decimal digits precision",
+            "<strong>char:</strong> 1 byte, single ASCII character"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Here's a complete example using different types:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "#include <stdio.h>\n\nint main() {\n    int score = 95;\n    float temperature = 72.5;\n    char initial = 'J';\n    \n    printf(\"Score: %d\\n\", score);\n    printf(\"Temperature: %.1f\\n\", temperature);\n    printf(\"Initial: %c\\n\", initial);\n    \n    return 0;\n}"
+        },
+        {
+          "type": "exercise",
+          "title": "💪 Exercise",
+          "text": "Create variables to store your age, height (in meters), and first initial. Print them using appropriate format specifiers."
+        }
+      ]
+    },
+    {
+      "id": "chapter4",
+      "number": 4,
+      "title": "Input & Output",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "So far we've only printed output. Now let's learn to get input from users using scanf():"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "#include <stdio.h>\n\nint main() {\n    int age;\n    \n    printf(\"Enter your age: \");\n    scanf(\"%d\", &age);\n    \n    printf(\"You are %d years old.\\n\", age);\n    \n    return 0;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "The & symbol (address-of operator) is crucial - it tells scanf() where to store the input value in memory."
+        },
+        {
+          "type": "info-box",
+          "title": "⚠️ Important Note",
+          "items": [
+            "Always use & with scanf() for basic types (int, float, char). This is one of the most common mistakes beginners make!"
+          ]
+        },
+        {
+          "type": "exercise",
+          "title": "💪 Exercise",
+          "text": "Write a program that asks for two numbers, adds them together, and displays the result."
+        }
+      ]
+    },
+    {
+      "id": "chapter5",
+      "number": 5,
+      "title": "Control Flow",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Control flow statements let your program make decisions and repeat actions. The if statement checks conditions:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "#include <stdio.h>\n\nint main() {\n    int age;\n    \n    printf(\"Enter your age: \");\n    scanf(\"%d\", &age);\n    \n    if (age >= 18) {\n        printf(\"You are an adult.\\n\");\n    } else {\n        printf(\"You are a minor.\\n\");\n    }\n    \n    return 0;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "For repeating actions, use loops. Here's a for loop that counts from 1 to 5:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "for (int i = 1; i <= 5; i++) {\n    printf(\"%d\\n\", i);\n}"
+        },
+        {
+          "type": "exercise",
+          "title": "💪 Exercise",
+          "text": "Write a program that checks if a number is positive, negative, or zero. Then create a loop that prints the multiplication table for any number."
+        }
+      ]
+    },
+    {
+      "id": "chapter6",
+      "number": 6,
+      "title": "Functions",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Functions help you organize code into reusable blocks. Here's how to create and call a function:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "#include <stdio.h>\n\n// Function declaration\nint add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int result = add(5, 3);\n    printf(\"5 + 3 = %d\\n\", result);\n    return 0;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Functions can accept parameters and return values. The return type is specified before the function name."
+        },
+        {
+          "type": "exercise",
+          "title": "💪 Exercise",
+          "text": "Create a function that calculates the area of a rectangle given width and height."
+        }
+      ]
+    },
+    {
+      "id": "chapter7",
+      "number": 7,
+      "title": "Arrays",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Arrays store multiple values of the same type in a single variable:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "#include <stdio.h>\n\nint main() {\n    int numbers[5] = {10, 20, 30, 40, 50};\n    \n    for (int i = 0; i < 5; i++) {\n        printf(\"numbers[%d] = %d\\n\", i, numbers[i]);\n    }\n    \n    return 0;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Array indices start at 0. The first element is numbers[0], the second is numbers[1], and so on."
+        },
+        {
+          "type": "exercise",
+          "title": "💪 Exercise",
+          "text": "Create an array of 10 numbers and write a program to find the largest value in the array."
+        }
+      ]
+    },
+    {
+      "id": "chapter8",
+      "number": 8,
+      "title": "Final Project",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Now let's put everything together! Create a simple number guessing game:"
+        },
+        {
+          "type": "code",
+          "language": "C",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <time.h>\n\nint main() {\n    srand(time(NULL));\n    int secret = rand() % 100 + 1;\n    int guess, attempts = 0;\n    \n    printf(\"Guess the number (1-100)!\\n\");\n    \n    do {\n        printf(\"Enter your guess: \");\n        scanf(\"%d\", &guess);\n        attempts++;\n        \n        if (guess < secret) {\n            printf(\"Too low!\\n\");\n        } else if (guess > secret) {\n            printf(\"Too high!\\n\");\n        }\n    } while (guess != secret);\n    \n    printf(\"Correct! You got it in %d attempts!\\n\", attempts);\n    return 0;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Congratulations! You've completed the C Programming for Beginners tutorial. You now have a solid foundation to continue learning more advanced C concepts."
+        },
+        {
+          "type": "exercise",
+          "title": "💪 Final Challenge",
+          "text": "Enhance the game by: 1) Adding a maximum number of attempts, 2) Letting the user play multiple rounds, 3) Keeping track of their best score."
+        }
+      ]
+    }
+  ]
+}

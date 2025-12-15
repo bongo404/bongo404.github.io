@@ -1,0 +1,49 @@
+{
+  "tutorials": [
+    {
+      "id": "c-programming-beginners",
+      "title": "C Programming for Beginners",
+      "difficulty": "beginner",
+      "category": "Programming",
+      "duration": "6 hours",
+      "description": "Learn the basics of C programming. No prior experience needed.",
+      "tags": ["C", "Programming", "Low-level"],
+      "author": "bongo404",
+      "datePublished": "2025-09-28",
+      "totalChapters": 8,
+      "dataFile": "c-programming-beginners.json",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "overthewire-bandit",
+      "type": "levels",
+      "title": "OverTheWire Bandit: Complete Walkthrough",
+      "difficulty": "beginner",
+      "category": "Cybersecurity",
+      "duration": "8 hours",
+      "description": "Master Linux command line and security fundamentals through OverTheWire's Bandit wargame. Each level teaches essential hacking and system administration skills.",
+      "tags": ["Linux", "Security", "CTF", "Command Line"],
+      "author": "bongo404",
+      "datePublished": "2025-10-15",
+      "totalChapters": 35,
+      "dataFile": "overthewire-bandit.json",
+      "featured": false,
+      "published": true
+    }
+  ],
+  "categories": [
+    "Programming",
+    "Game Development",
+    "Operating Systems",
+    "Hardware",
+    "Art & Design",
+    "Web Development",
+    "Cybersecurity"
+  ],
+  "difficulties": [
+    "beginner",
+    "intermediate",
+    "advanced"
+  ]
+}

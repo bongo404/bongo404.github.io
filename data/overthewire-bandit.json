@@ -1,0 +1,310 @@
+{
+  "id": "overthewire-bandit",
+  "title": "OverTheWire Bandit: Complete Walkthrough",
+  "difficulty": "beginner",
+  "category": "Cybersecurity",
+  "duration": "8 hours",
+  "totalChapters": 8,
+  "type": "levels",
+  "description": "Practice Linux command line and security fundamentals through OverTheWire's Bandit wargame. Each level teaches essential hacking and system administration skills.",
+  "chapters": [
+    {
+      "id": "level0",
+      "number": 0,
+      "title": "Introduction & Level 0",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "OverTheWire Bandit is a wargame designed to teach Linux command line basics and security concepts. Each level requires you to find a password to access the next level, progressively building your skills."
+        },
+        {
+          "type": "paragraph",
+          "text": "In this tutorial, we'll work through the levels, explaining not just the solution but the underlying concepts and tools you'll use."
+        },
+        {
+          "type": "info-box",
+          "title": "What You'll Learn",
+          "items": [
+            "<strong>Linux command line navigation and file operations</strong>",
+            "<strong>SSH connections and remote access</strong>",
+            "<strong>Text processing with grep, find, and pipes</strong>",
+            "<strong>File permissions and hidden files</strong>",
+            "<strong>Basic cryptography and encoding</strong>",
+            "<strong>Network tools and protocols</strong>"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "<strong>Level 0:</strong> The goal of this level is to log into the game using SSH. The host is bandit.labs.overthewire.org on port 2220."
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "ssh bandit0@bandit.labs.overthewire.org -p 2220\n# Password: bandit0"
+        },
+        {
+          "type": "paragraph",
+          "text": "Once connected, you'll see a welcome message. You're now in the Bandit Level 0 shell! The password for the next level is stored in a file called <strong>readme</strong> in the home directory."
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "ls\ncat readme"
+        },
+        {
+          "type": "exercise",
+          "title": "Challenge",
+          "text": "Find and read the readme file to get the password for Level 1. Use the 'ls' command to list files and 'cat' to display file contents."
+        }
+      ]
+    },
+    {
+      "id": "level1",
+      "number": 1,
+      "title": "Level 1 → Level 2: Dashed Filename",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Log in to Level 1 using the password you found. The password for the next level is stored in a file called <strong>-</strong> located in the home directory."
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "ssh bandit1@bandit.labs.overthewire.org -p 2220"
+        },
+        {
+          "type": "paragraph",
+          "text": "The challenge here is that <strong>-</strong> is interpreted by the shell as stdin. Simply using 'cat -' won't work. We need to specify the file path explicitly:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "cat ./-"
+        },
+        {
+          "type": "info-box",
+          "title": "Key Concept: Special Characters",
+          "items": [
+            "<strong>The dash (-) is treated specially by most commands</strong>",
+            "<strong>Use ./ to specify current directory explicitly</strong>",
+            "<strong>Alternative: cat < - also works</strong>"
+          ]
+        },
+        {
+          "type": "exercise",
+          "title": "Challenge",
+          "text": "Read the file named '-' and retrieve the password for Level 2. Remember to use ./ before the filename."
+        }
+      ]
+    },
+    {
+      "id": "level2",
+      "number": 2,
+      "title": "Level 2 → Level 3: Spaces in Filename",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The password for the next level is stored in a file called <strong>spaces in this filename</strong> located in the home directory."
+        },
+        {
+          "type": "paragraph",
+          "text": "Spaces in filenames require special handling. You have several options:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "# Method 1: Escape spaces with backslash\ncat spaces\\ in\\ this\\ filename\n\n# Method 2: Use quotes\ncat \"spaces in this filename\"\n\n# Method 3: Tab completion\ncat spa<TAB>"
+        },
+        {
+          "type": "info-box",
+          "title": "Pro Tip",
+          "items": [
+            "<strong>Tab completion is your friend - type the first few characters and press TAB</strong>",
+            "<strong>The shell will automatically escape spaces for you</strong>",
+            "<strong>Double quotes preserve spaces and special characters</strong>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level3",
+      "number": 3,
+      "title": "Level 3 → Level 4: Hidden Files",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The password is stored in a hidden file in the <strong>inhere</strong> directory."
+        },
+        {
+          "type": "paragraph",
+          "text": "In Linux, files starting with a dot (.) are hidden by default. To see them, use the -a flag with ls:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "cd inhere\nls -la"
+        },
+        {
+          "type": "paragraph",
+          "text": "The -l flag gives a detailed listing, and -a shows all files including hidden ones. You should see a file named <strong>.hidden</strong>:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "cat .hidden"
+        },
+        {
+          "type": "info-box",
+          "title": "Understanding ls Flags",
+          "items": [
+            "<strong>-a: Show all files, including hidden ones</strong>",
+            "<strong>-l: Long format with permissions, size, dates</strong>",
+            "<strong>-h: Human-readable file sizes</strong>",
+            "<strong>Combine flags: ls -lah</strong>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level4",
+      "number": 4,
+      "title": "Level 4 → Level 5: Finding Human-Readable Files",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The password is in the only human-readable file in the <strong>inhere</strong> directory. There are 10 files, but only one contains ASCII text."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the <strong>file</strong> command to identify file types:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "cd inhere\nfile ./*"
+        },
+        {
+          "type": "paragraph",
+          "text": "The file command analyzes content and tells you the file type. Look for \"ASCII text\" in the output. Once identified, cat that specific file:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "cat ./-file07"
+        },
+        {
+          "type": "exercise",
+          "title": "Challenge",
+          "text": "Use the 'file' command to identify which of the 10 files contains human-readable text, then retrieve the password."
+        }
+      ]
+    },
+    {
+      "id": "level5",
+      "number": 5,
+      "title": "Level 5 → Level 6: Finding Files by Properties",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The password is stored somewhere in the <strong>inhere</strong> directory with these properties: human-readable, 1033 bytes in size, and not executable."
+        },
+        {
+          "type": "paragraph",
+          "text": "The <strong>find</strong> command is perfect for this. It can search by size, permissions, and other criteria:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "find inhere/ -type f -size 1033c ! -executable"
+        },
+        {
+          "type": "info-box",
+          "title": "Understanding Find Flags",
+          "items": [
+            "<strong>-type f: Only find regular files (not directories)</strong>",
+            "<strong>-size 1033c: Exactly 1033 bytes (c = bytes)</strong>",
+            "<strong>! -executable: NOT executable</strong>",
+            "<strong>-readable: Human-readable files</strong>"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Once you've located the file, use cat to read it and get the password."
+        }
+      ]
+    },
+    {
+      "id": "level6",
+      "number": 6,
+      "title": "Level 6 → Level 7: System-Wide Search",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The password is stored somewhere on the server with these properties: owned by user bandit7, owned by group bandit6, and 33 bytes in size."
+        },
+        {
+          "type": "paragraph",
+          "text": "This time we need to search the entire system, not just our home directory:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null"
+        },
+        {
+          "type": "paragraph",
+          "text": "The <strong>2>/dev/null</strong> redirects error messages (like permission denied) to /dev/null, making the output cleaner."
+        },
+        {
+          "type": "info-box",
+          "title": "Understanding Redirection",
+          "items": [
+            "<strong>2> redirects stderr (error messages)</strong>",
+            "<strong>/dev/null is a black hole that discards data</strong>",
+            "<strong>This prevents permission denied errors from cluttering output</strong>",
+            "<strong>Alternative: 2>&1 redirects errors to standard output</strong>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level7",
+      "number": 7,
+      "title": "Level 7 → Level 8: Grep for Pattern Matching",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The password is in the file <strong>data.txt</strong> next to the word \"millionth\"."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use <strong>grep</strong> to search for text patterns within files:"
+        },
+        {
+          "type": "code",
+          "language": "BASH",
+          "code": "grep \"millionth\" data.txt"
+        },
+        {
+          "type": "paragraph",
+          "text": "Grep searches for the pattern and returns matching lines. This is much faster than manually reading through a large file."
+        },
+        {
+          "type": "info-box",
+          "title": "Grep Power Tips",
+          "items": [
+            "<strong>-i: Case-insensitive search</strong>",
+            "<strong>-n: Show line numbers</strong>",
+            "<strong>-v: Invert match (show non-matching lines)</strong>",
+            "<strong>-r: Recursive search through directories</strong>"
+          ]
+        },
+        {
+          "type": "exercise",
+          "title": "Challenge",
+          "text": "Use grep to find the password in data.txt. Try combining grep with other commands using pipes to process the output further."
+        }
+      ]
+    }
+  ]
+}
