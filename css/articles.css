@@ -154,6 +154,31 @@
             z-index: 2;
         }
 
+        /* Additional styles for article meta information */
+        .article-meta {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .article-meta .read-time {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: var(--twilight-medium);
+            border: 1px solid var(--twilight-light);
+            margin-right: 10px;
+        }
+
+        body.light-mode .article-meta {
+            color: #666666;
+        }
+
+        body.light-mode .article-meta .read-time {
+            background-color: #f0f0f0;
+            border-color: #cccccc;
+        }
+
+
         @media (max-width: 768px) {
             .articles-grid {
                 grid-template-columns: 1fr;

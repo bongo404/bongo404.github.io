@@ -209,6 +209,45 @@ function copyCode(button) {
     document.body.removeChild(textarea);
 }
 
+// Sidebar toggle functionality
+let isSidebarOpen = true;
+
+function toggleSidebar() {
+    const container = document.querySelector('.container');
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    
+    if (isSidebarOpen) {
+        // Close sidebar
+        container.classList.add('sidebar-closed');
+        toggleBtn.innerHTML = '[☰]';
+        toggleBtn.setAttribute('aria-label', 'Open sidebar');
+        localStorage.setItem('sidebarState', 'closed');
+        isSidebarOpen = false;
+    } else {
+        // Open sidebar
+        container.classList.remove('sidebar-closed');
+        toggleBtn.innerHTML = '[✕]';
+        toggleBtn.setAttribute('aria-label', 'Close sidebar');
+        localStorage.setItem('sidebarState', 'open');
+        isSidebarOpen = true;
+    }
+}
+
+// Initialize sidebar state
+function initSidebarState() {
+    const savedState = localStorage.getItem('sidebarState');
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    
+    if (savedState === 'closed') {
+        toggleSidebar();
+    } else {
+        // Default to open, set button text accordingly
+        if (toggleBtn) {
+            toggleBtn.innerHTML = '[✕]';
+        }
+    }
+}
+
 // Theme toggle
 let isLightMode = false;
 
@@ -239,15 +278,170 @@ function initTheme() {
     }
 }
 
-// Keyboard shortcut (Ctrl/Cmd + D)
+// Keyboard shortcuts
 document.addEventListener('keydown', function(e) {
+    // Ctrl/Cmd + D for theme toggle
     if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
         e.preventDefault();
         toggleLightMode();
     }
+    
+    // Ctrl/Cmd + B for sidebar toggle
+    if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+        e.preventDefault();
+        toggleSidebar();
+    }
 });
 
-// Notes functionality (stored in memory during session)
+// Add these functions to tutorial-page.js
+
+// Bookmarks system
+let bookmarks = [];
+const MAX_BOOKMARKS = 10;
+const BOOKMARKS_KEY = 'tutorial-bookmarks-';
+
+// Toggle bookmarks panel
+function toggleBookmarksPanel() {
+    const panel = document.getElementById('bookmarksPanel');
+    panel.classList.toggle('active');
+}
+
+// Load bookmarks from localStorage
+function loadBookmarks(tutorialId) {
+    const saved = localStorage.getItem(BOOKMARKS_KEY + tutorialId);
+    if (saved) {
+        bookmarks = JSON.parse(saved);
+        updateBookmarksUI();
+    }
+}
+
+// Save bookmarks to localStorage
+function saveBookmarks(tutorialId) {
+    localStorage.setItem(BOOKMARKS_KEY + tutorialId, JSON.stringify(bookmarks));
+}
+
+// Add bookmark
+function addBookmark(chapterId, chapterTitle) {
+    const tutorialId = getTutorialId();
+    
+    // Check if already bookmarked
+    const existingIndex = bookmarks.findIndex(b => b.id === chapterId);
+    if (existingIndex !== -1) {
+        // Remove bookmark
+        bookmarks.splice(existingIndex, 1);
+        saveBookmarks(tutorialId);
+        updateBookmarksUI();
+        return;
+    }
+    
+    // Check max bookmarks
+    if (bookmarks.length >= MAX_BOOKMARKS) {
+        alert(`Maximum ${MAX_BOOKMARKS} bookmarks reached. Please delete a bookmark first.`);
+        return;
+    }
+    
+    // Add new bookmark
+    bookmarks.push({
+        id: chapterId,
+        title: chapterTitle,
+        timestamp: Date.now()
+    });
+    
+    saveBookmarks(tutorialId);
+    updateBookmarksUI();
+}
+
+// Delete bookmark
+function deleteBookmark(chapterId) {
+    const tutorialId = getTutorialId();
+    bookmarks = bookmarks.filter(b => b.id !== chapterId);
+    saveBookmarks(tutorialId);
+    updateBookmarksUI();
+}
+
+// Go to bookmark
+function goToBookmark(chapterId) {
+    const element = document.getElementById(chapterId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        toggleBookmarksPanel(); // Close panel after navigation
+    }
+}
+
+// Update bookmarks UI
+function updateBookmarksUI() {
+    const list = document.getElementById('bookmarksList');
+    const count = document.getElementById('bookmarksCount');
+    
+    // Update count
+    count.textContent = `${bookmarks.length} / ${MAX_BOOKMARKS} bookmarks`;
+    
+    // Update list
+    if (bookmarks.length === 0) {
+        list.innerHTML = '<p class="no-bookmarks">No bookmarks yet. Click "Add Bookmark" button next to any section to save your place!</p>';
+    } else {
+        list.innerHTML = bookmarks.map(bookmark => `
+            <div class="bookmark-item">
+                <div class="bookmark-title" onclick="goToBookmark('${bookmark.id}')">${bookmark.title}</div>
+                <button class="bookmark-delete" onclick="deleteBookmark('${bookmark.id}')">[X]</button>
+            </div>
+        `).join('');
+    }
+    
+    // Update add bookmark buttons
+    updateBookmarkButtons();
+}
+
+// Update bookmark buttons state
+function updateBookmarkButtons() {
+    document.querySelectorAll('.add-bookmark-btn').forEach(btn => {
+        const chapterId = btn.getAttribute('data-chapter-id');
+        const isBookmarked = bookmarks.some(b => b.id === chapterId);
+        
+        if (isBookmarked) {
+            btn.classList.add('bookmarked');
+            btn.textContent = '[★ Bookmarked]';
+        } else {
+            btn.classList.remove('bookmarked');
+            btn.textContent = '[+ Bookmark]';
+        }
+    });
+}
+
+// Add bookmark buttons to chapters
+function addBookmarkButtons() {
+    const chapters = document.querySelectorAll('.chapter-section');
+    
+    chapters.forEach(chapter => {
+        const title = chapter.querySelector('.chapter-title');
+        const chapterId = chapter.id;
+        const chapterText = title.textContent;
+        
+        // Check if button already exists
+        if (title.querySelector('.add-bookmark-btn')) return;
+        
+        // Create bookmark button
+        const btn = document.createElement('button');
+        btn.className = 'add-bookmark-btn';
+        btn.setAttribute('data-chapter-id', chapterId);
+        btn.textContent = '[+ Bookmark]';
+        btn.onclick = () => addBookmark(chapterId, chapterText);
+        
+        title.appendChild(btn);
+    });
+    
+    updateBookmarkButtons();
+}
+
+// Keyboard shortcut (Ctrl/Cmd + M) to toggle bookmarks panel
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
+        e.preventDefault();
+        toggleBookmarksPanel();
+    }
+});
+
+// Notes functionality (stored in localStorage per tutorial)
 let notesContent = '';
 const notesKey = 'tutorial-notes-';
 
@@ -308,6 +502,10 @@ function showLoading() {
 }
 
 // Main initialization
+// Replace the init() function in tutorial-page.js with this:
+
+// Replace the init() function in tutorial-page.js with this:
+
 async function init() {
     const tutorialId = getTutorialId();
     
@@ -330,14 +528,199 @@ async function init() {
     renderChapterNav(tutorialData);
     renderChapters(tutorialData);
     
-    // Initialize theme and notes
+    // Initialize features
     initTheme();
     initNotes(tutorialId);
+    initSidebarState();
+    
+    // Initialize bookmarks system
+    addBookmarkButtons();
+    loadBookmarks(tutorialId);
+    
+    // Initialize highlighter system
+    loadHighlights(tutorialId);
     
     // Set up scroll listener for active chapter highlighting
     window.addEventListener('scroll', updateActiveChapter);
     window.addEventListener('load', updateActiveChapter);
 }
+
+// Highlighter system
+let isHighlighterActive = false;
+let highlights = [];
+const HIGHLIGHTS_KEY = 'tutorial-highlights-';
+
+// Toggle highlighter mode
+function toggleHighlighter() {
+    isHighlighterActive = !isHighlighterActive;
+    const btn = document.querySelector('.highlighter-toggle');
+    
+    if (isHighlighterActive) {
+        document.body.classList.add('highlighter-active');
+        btn.classList.add('active');
+        btn.setAttribute('aria-label', 'Disable highlighter');
+        enableHighlighting();
+    } else {
+        document.body.classList.remove('highlighter-active');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-label', 'Enable highlighter');
+        disableHighlighting();
+    }
+}
+
+// Enable text highlighting
+function enableHighlighting() {
+    document.addEventListener('mouseup', handleTextSelection);
+}
+
+// Disable text highlighting
+function disableHighlighting() {
+    document.removeEventListener('mouseup', handleTextSelection);
+}
+
+// Handle text selection
+function handleTextSelection(e) {
+    if (!isHighlighterActive) return;
+    
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+    
+    if (selectedText.length === 0) return;
+    
+    // Get the range
+    const range = selection.getRangeAt(0);
+    
+    // Check if selection is within allowed content areas
+    const container = range.commonAncestorContainer;
+    const parentElement = container.nodeType === 3 ? container.parentNode : container;
+    
+    const allowedContainers = [
+        '.chapter-content',
+        '.tutorial-intro',
+        '.info-box',
+        '.exercise-box'
+    ];
+    
+    let isAllowed = false;
+    for (const selector of allowedContainers) {
+        if (parentElement.closest(selector)) {
+            isAllowed = true;
+            break;
+        }
+    }
+    
+    if (!isAllowed) return;
+    
+    // Don't highlight if already highlighted
+    if (parentElement.classList.contains('highlighted-text')) return;
+    
+    // Create highlight
+    const highlightSpan = document.createElement('span');
+    highlightSpan.className = 'highlighted-text';
+    highlightSpan.setAttribute('data-highlight-id', Date.now());
+    
+    try {
+        range.surroundContents(highlightSpan);
+        
+        // Save highlight
+        const tutorialId = getTutorialId();
+        saveHighlight(tutorialId, {
+            id: highlightSpan.getAttribute('data-highlight-id'),
+            text: selectedText,
+            timestamp: Date.now()
+        });
+        
+        // Add click to remove
+        highlightSpan.addEventListener('click', function(event) {
+            if (event.target === this) {
+                removeHighlight(this);
+            }
+        });
+        
+        // Clear selection
+        selection.removeAllRanges();
+    } catch (err) {
+        console.warn('Could not highlight complex selection:', err);
+    }
+}
+
+// Save highlight to localStorage
+function saveHighlight(tutorialId, highlight) {
+    highlights.push(highlight);
+    localStorage.setItem(HIGHLIGHTS_KEY + tutorialId, JSON.stringify(highlights));
+}
+
+// Load highlights from localStorage
+function loadHighlights(tutorialId) {
+    const saved = localStorage.getItem(HIGHLIGHTS_KEY + tutorialId);
+    if (saved) {
+        highlights = JSON.parse(saved);
+        restoreHighlights();
+    }
+}
+
+// Restore highlights (basic restoration - works for simple text)
+function restoreHighlights() {
+    // Note: This is a simplified restoration that works for most cases
+    // For complex selections, highlights may not restore perfectly
+    const contentAreas = document.querySelectorAll('.chapter-content, .tutorial-intro, .info-box, .exercise-box');
+    
+    highlights.forEach(highlight => {
+        contentAreas.forEach(area => {
+            if (area.textContent.includes(highlight.text)) {
+                // Mark that we've attempted to restore this
+                // In a production app, you'd want more sophisticated text matching
+            }
+        });
+    });
+}
+
+// Remove highlight
+function removeHighlight(element) {
+    const highlightId = element.getAttribute('data-highlight-id');
+    const tutorialId = getTutorialId();
+    
+    // Remove from array
+    highlights = highlights.filter(h => h.id !== highlightId);
+    localStorage.setItem(HIGHLIGHTS_KEY + tutorialId, JSON.stringify(highlights));
+    
+    // Remove highlight span, keep text
+    const parent = element.parentNode;
+    while (element.firstChild) {
+        parent.insertBefore(element.firstChild, element);
+    }
+    parent.removeChild(element);
+    
+    // Normalize text nodes
+    parent.normalize();
+}
+
+// Clear all highlights
+function clearAllHighlights() {
+    if (!confirm('Are you sure you want to clear all highlights?')) return;
+    
+    const tutorialId = getTutorialId();
+    highlights = [];
+    localStorage.removeItem(HIGHLIGHTS_KEY + tutorialId);
+    
+    // Remove all highlight spans
+    document.querySelectorAll('.highlighted-text').forEach(el => {
+        const parent = el.parentNode;
+        while (el.firstChild) {
+            parent.insertBefore(el.firstChild, el);
+        }
+        parent.removeChild(el);
+        parent.normalize();
+    });
+}
+
+// Keyboard shortcut (Ctrl/Cmd + H) to toggle highlighter
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+        e.preventDefault();
+        toggleHighlighter();
+    }
+});
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {

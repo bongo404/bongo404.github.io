@@ -93,14 +93,17 @@ function renderTutorials() {
 }
 
 // Generate chapters/levels list
+// Generate chapters/levels list with max 8 items
 function generateChaptersList(tutorial) {
     const label = tutorial.type === 'levels' ? 'Level' : 'Chapter';
     const pluralLabel = getPluralLabel(tutorial);
+    const maxDisplay = 8;
     
-    // For now, we'll generate generic chapter/level numbers
-    // If you want actual titles, you'd need to load the full tutorial JSON
+    // Generate chapter/level numbers
     const chapters = [];
-    for (let i = (tutorial.type === 'levels' ? 0 : 1); i < (tutorial.type === 'levels' ? tutorial.totalChapters : tutorial.totalChapters + 1); i++) {
+    const totalToGenerate = Math.min(tutorial.totalChapters, maxDisplay);
+    
+    for (let i = (tutorial.type === 'levels' ? 0 : 1); i < (tutorial.type === 'levels' ? totalToGenerate : totalToGenerate + 1); i++) {
         chapters.push(`${label} ${i}`);
     }
     
@@ -109,11 +112,17 @@ function generateChaptersList(tutorial) {
         return `<li class="chapter-item"><span class="chapter-number">${num}.</span>${chapter}</li>`;
     }).join('');
 
+    // Add ellipsis if there are more chapters
+    const ellipsisHTML = tutorial.totalChapters > maxDisplay 
+        ? '<li class="chapter-item chapter-ellipsis">...</li>' 
+        : '';
+
     return `
         <div class="tutorial-chapters">
             <div class="chapters-header">${pluralLabel}</div>
             <ul class="chapters-list">
                 ${chaptersHTML}
+                ${ellipsisHTML}
             </ul>
         </div>
     `;

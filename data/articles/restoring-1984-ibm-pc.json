@@ -1,0 +1,134 @@
+{
+  "article": {
+    "id": 1,
+    "title": "Restoring a 1984 IBM PC",
+    "slug": "restoring-1984-ibm-pc",
+    "category": "hardware",
+    "date": "2025-09-15",
+    "author": "Bongo404",
+    "readTime": "8 min read",
+    "tags": ["restoration", "IBM", "vintage computing"],
+    "excerpt": "Journey through the restoration of a classic IBM PC, from cleaning to getting it boot-ready. Discover the challenges and triumphs of bringing vintage tech back to life.",
+    "featuredImage": "../images/ibm-pc-restoration.jpg",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "When I first laid eyes on the dusty IBM PC 5150 at a local estate sale, I knew I had found something special. This iconic machine, released in 1981, represented the beginning of the PC revolution. But it was in rough shape—covered in decades of dust, with yellowed plastic and mysterious stains on the keyboard."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Initial Assessment"
+      },
+      {
+        "type": "paragraph",
+        "text": "Before diving into any restoration project, it's crucial to assess what you're working with. I carefully inspected the machine, noting several issues that needed attention:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Heavy dust accumulation inside and out",
+          "Yellowed plastic case from UV exposure",
+          "Sticky residue on several keys",
+          "Unknown electrical condition",
+          "Missing expansion cards"
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The Cleaning Process"
+      },
+      {
+        "type": "paragraph",
+        "text": "I started with a complete disassembly. Every screw was carefully removed and organized. The keyboard received special attention—each keycap was removed and soaked in warm, soapy water. The PCB was gently cleaned with isopropyl alcohol and a soft brush."
+      },
+      {
+        "type": "image",
+        "src": "../images/ibm-pc-disassembly.jpg",
+        "alt": "Disassembled IBM PC showing internal components",
+        "caption": "The IBM PC completely disassembled for cleaning"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Retrobriting the Case"
+      },
+      {
+        "type": "paragraph",
+        "text": "The yellowed plastic was the biggest cosmetic issue. I used the 'retr0bright' method—a hydrogen peroxide solution activated by UV light. After 8 hours in the sun, the transformation was remarkable. The beige plastic had returned to its original color."
+      },
+      {
+        "type": "code",
+        "language": "text",
+        "code": "Retr0bright Recipe:\n- 12% Hydrogen Peroxide\n- 1 tsp Oxy powder per liter\n- Apply gel to plastic\n- Expose to UV light for 6-8 hours\n- Rinse and dry thoroughly"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Electrical Testing"
+      },
+      {
+        "type": "paragraph",
+        "text": "This is always the moment of truth. I carefully inspected the power supply, looking for bulging capacitors or signs of damage. Everything looked good, so I performed a slow power-up test using a variac to gradually increase voltage."
+      },
+      {
+        "type": "paragraph",
+        "text": "Success! The machine powered on, and after connecting a monitor, I was greeted with the beautiful sight of the ROM BASIC prompt. The system was alive!"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Final Touches"
+      },
+      {
+        "type": "paragraph",
+        "text": "With the machine working, I focused on the finishing details. I sourced period-correct expansion cards from online auctions, installed a CGA graphics card, and added a 5.25-inch floppy drive. After loading PC DOS 3.3, the restoration was complete."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Lessons Learned"
+      },
+      {
+        "type": "paragraph",
+        "text": "This restoration taught me patience and respect for vintage technology. These machines were built to last, and with proper care, they can continue functioning decades later. The most important lessons were:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Document everything—take photos before disassembly",
+          "Never force components—if it doesn't fit, you're doing it wrong",
+          "Test incrementally—don't reassemble everything before testing",
+          "Research period-correct parts and modifications",
+          "Join vintage computing communities for advice and support"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Now this 1984 IBM PC sits proudly on my desk, a working piece of computing history. Every time I boot it up and hear that satisfying beep, I'm reminded of the ingenuity and craftsmanship that went into these early personal computers."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Resources"
+      },
+      {
+        "type": "paragraph",
+        "text": "If you're interested in vintage computer restoration, here are some valuable resources:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "VCF (Vintage Computer Federation) forums",
+          "r/retrobattlestations subreddit",
+          "The 8-Bit Guy's YouTube channel",
+          "Adrian's Digital Basement",
+          "Retr0bright Wiki for plastic restoration"
+        ]
+      }
+    ],
+    "relatedArticles": [2, 5],
+    "published": true
+  }
+}

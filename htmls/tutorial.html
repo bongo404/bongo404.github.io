@@ -13,6 +13,31 @@
         [D]
     </button>
 
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+        [☰]
+    </button>
+
+    <button class="highlighter-toggle" onclick="toggleHighlighter()" aria-label="Toggle highlighter">
+    [🖊]
+    </button>
+
+    <!-- Bookmarks Toggle Button -->
+    <button class="bookmarks-toggle" onclick="toggleBookmarksPanel()" aria-label="Toggle bookmarks">
+        [★]
+    </button>
+
+    <!-- Bookmarks Panel -->
+    <div class="bookmarks-panel" id="bookmarksPanel">
+        <div class="bookmarks-header">
+            <h3>Bookmarks</h3>
+            <button class="close-bookmarks" onclick="toggleBookmarksPanel()">[✕]</button>
+        </div>
+        <div class="bookmarks-count" id="bookmarksCount">0 / 10 bookmarks</div>
+        <div class="bookmarks-list" id="bookmarksList">
+            <p class="no-bookmarks">No bookmarks yet. Click "Add Bookmark" button next to any section to save your place!</p>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">

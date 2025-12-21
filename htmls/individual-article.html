@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - Bongo404</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/individual-article.css">
+</head>
+<body> 
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleLightMode()" aria-label="Toggle light mode">
+        [D]
+    </button>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>bongo404</h1>
+                <p class="typewriter">Article</p>
+            </div>
+           
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">[Home]</a></li>
+                    <li><a href="articles.html">[Articles]</a></li>
+                    <li><a href="projects.html">[Projects]</a></li>
+                    <li><a href="tutorials.html">[Tutorials]</a></li>
+                    <li><a href="#about">[About]</a></li>
+                </ul>
+            </nav>
+           
+            <hr class="decorative">
+           
+            <!-- Table of Contents (dynamically generated) -->
+            <div class="toc-container" id="tocContainer" style="display: none;">
+                <h3>Table of Contents</h3>
+                <ul class="toc-list" id="tocList">
+                    <!-- TOC items will be inserted here -->
+                </ul>
+            </div>
+        </div>
+       
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <p>> Loading article...</p>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-state" id="errorState" style="display: none;">
+                <h2>Article Not Found</h2>
+                <p>The article you're looking for doesn't exist or couldn't be loaded.</p>
+                <a href="articles.html" class="back-btn">[Back to Articles]</a>
+            </div>
+
+            <!-- Article Content -->
+            <article class="article-container" id="articleContainer" style="display: none;">
+                <!-- Article Header -->
+                <header class="article-header">
+                    <a href="articles.html" class="back-link">[← Back to Articles]</a>
+                    <div class="article-category-badge" id="categoryBadge"></div>
+                    <h1 class="article-title" id="articleTitle"></h1>
+                    <div class="article-metadata">
+                        <span class="article-date" id="articleDate"></span>
+                        <span class="article-author" id="articleAuthor"></span>
+                        <span class="article-read-time" id="articleReadTime"></span>
+                    </div>
+                    <div class="article-tags" id="articleTags"></div>
+                </header>
+
+                <!-- Featured Image -->
+                <div class="featured-image-container" id="featuredImageContainer" style="display: none;">
+                    <img id="featuredImage" alt="" />
+                </div>
+
+                <!-- Article Body -->
+                <div class="article-body" id="articleBody">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+
+                <!-- Related Articles -->
+                <div class="related-articles" id="relatedArticles" style="display: none;">
+                    <h2>Related Articles</h2>
+                    <div class="related-articles-grid" id="relatedArticlesGrid">
+                        <!-- Related articles will be inserted here -->
+                    </div>
+                </div>
+            </article>
+           
+            <!-- Footer -->
+            <div class="footer">
+                © 2025 Bongo404
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/individual-article.js"></script>
+</body>
+</html>
